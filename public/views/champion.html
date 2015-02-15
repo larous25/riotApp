@@ -1,0 +1,32 @@
+<div>
+	<a href="#/" class="btn">Atras</a>
+	<h3>{{champion.title}} <span ng-repeat="tag in champion.tags">{{tag}}</span></h3>
+	<h2>{{champion.name}}</h2>
+	<img src="{{champion.key | imgruote}}"/>
+	<div>
+		<h4>{{champion.passive.name}}</h4>
+		<p>{{champion.passive.description}}</p>
+		<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/passive/{{champion.passive.image.full}}"/>
+	</div>
+	<h3 class="text-center">hechizos</h3>
+	<div class="col-lg-12">
+		<div ng-repeat="spell in champion.spells" class="col-lg-3">
+			<div class="col-lg-4">
+				<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/spell/{{spell.image.full}}">
+			</div>
+			<div class="col-lg-8">
+				<h5><small>{{spell.key}}</small> {{spell.name}}</h5>
+				{{spell.description}}
+			</div>
+		</div>
+	</div>
+	<h3 class="text-center">apariencias</h3>
+	<div ng-repeat="(index, skin) in champion.skins">
+		<img width="100" src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{champion.name}}_{{index}}.jpg" alt=""/>
+		<h5>{{skin.name}}</h5>
+	</div>
+	<div>
+		<h4>historia</h4>
+		{{champion.lore}}
+	</div>
+</div>

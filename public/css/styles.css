@@ -1,0 +1,22 @@
+body{
+	margin: 25px;
+}
+ul.champions{
+	width: 100%;
+}
+ul.champions li{
+	cursor: pointer;
+	float: left;
+	list-style: none;
+	transition: all 1s ease 0.5; 
+	margin: 5px;
+	width: 25%;
+}
+ul.champions li:hover{
+	color:#e4e4e4;
+}
+ul.champions ~ btn{
+	clear: both;
+	float: left;
+	margin-bottom: 5px; 
+}

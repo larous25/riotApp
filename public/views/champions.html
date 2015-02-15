@@ -1,0 +1,20 @@
+<div>
+	<header class="header">
+		<nav class="navbar navbardefault">
+			<h2>Champions</h2>
+			<input type="text" placeholder="search a champion" class="search" ng-model="text"/>
+			<button class="btn-default"><span class="glyphicon glyphicon-search"></span></button>
+		</nav>
+	</header>
+		<div class="champions col-lg-12">
+			<div ng-repeat="champs in champions | filter:text" class="col-lg-4">
+				<div>
+					<a href="/#champ/{{champs.id}}">
+						<h4>{{champs.title}} <small>{{champs.id}}</small></h4>
+						<h3>{{champs.name}}</h3>
+						<img src="{{champs.key | imgruote}}"/>
+					</a>
+				</div>
+			</div>
+		</div>
+</div>

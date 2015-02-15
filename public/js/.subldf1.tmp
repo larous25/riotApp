@@ -1,0 +1,64 @@
+(function(){
+	angular.module('ritopls.services', [])
+	.factory('ritoChampionService', ['$http', '$q', function($http, $q){
+
+		var paths = {
+			basePath:'https://lan.api.pvp.net/api/',
+			key:{
+				'api_key':'a10fcede-7cbc-4f61-8fc7-8a4ea44d16ec'
+			}
+		};
+
+		function champions (){
+			var deferred = $q.defer();
+			var opctionsXhrNames = {
+				method:'GET',
+				url:paths.basePath+'lol/static-data/lan/v1.2/champion/',
+				dataType:'JSON',
+				params:paths.key
+			};
+
+			$http(opctionsXhrNames)
+			.success(function(data, status, responce, headers){
+				deferred.resolve(data.data);
+				console.log('------------------- 1');
+				console.log(data);
+				console.log('------------------- 2');
+				console.log(status);
+				console.log('------------------- 3');
+				console.log(responce);
+				console.log('------------------- 4');
+				console.log(headers);
+			});
+			console.log( deferred.promise);
+			return deferred.promise;
+		}
+
+		function champion(championId){
+			var deferred = $q.defer();
+			var params = paths.key;
+
+			params.champData = 'all';
+
+			var opctionsXhrNames = {
+				method:'GET',
+				url:paths.basePath+'lol/static-data/lan/v1.2/champion/'+championId,
+				dataType:'JSON',
+				params:params
+			};
+
+			$http(opctionsXhrNames)
+			.success(function(data){
+				deferred.resolve(data);
+			});
+
+			return deferred.promise;
+		}
+		
+		return {
+			champions : champions,
+			champion : champion
+		};
+	}])
+		
+})();
